@@ -2,7 +2,7 @@
 $host = 'charity-hub-server.database.windows.net';
 $username = 'petedxfwil';
 $password = '5GVJTLD5665X4555$';
-$database = 'Charity-Hub';
+$database = 'Charity-Hub-DB';
 
 // Create a connection
 $mysqli = new mysqli($host, $username, $password, $database);
