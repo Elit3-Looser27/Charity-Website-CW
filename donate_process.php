@@ -3,8 +3,8 @@ session_start();
 // Replace with your database credentials
 $host = 'charity-hub-server.database.windows.net';
 $dbname = 'Charity-Hub';
-$username = 'petedxfwil';
-$password = '5GVJTLD5665X4555$';
+$username = 'Begad-Anass';
+$password = 'Hatem@120503';
 
 // Create a PDO database connection
 try {
