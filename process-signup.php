@@ -36,7 +36,7 @@ $conn = require __DIR__ . "/database.php";
 
 // Prepare the SQL statement
 
-$sql = "INSERT INTO user (name, email, password_hash)
+$sql = "INSERT INTO [user] (name, email, password_hash)
         VALUES (?, ?, ?)";
 
 $stmt = $conn->prepare($sql);
