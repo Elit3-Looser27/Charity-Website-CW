@@ -32,7 +32,7 @@ $password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
 // Connect to the database
 
-$mysqli = require __DIR__ . "/database.php";
+$conn = require __DIR__ . "/database.php";
 
 // Prepare the SQL statement
 
