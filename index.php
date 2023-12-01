@@ -9,21 +9,25 @@ if (isset($_SESSION["user_id"])) {
     
    // uses the require function to include the database connection file, which contains the connection details to the MySQL database.
 
-    $mysqli = require __DIR__ . "/database.php";
+    $pdo = require __DIR__ . "/database.php";
     
     // variable is assigned an SQL query that selects all columns from the user table where the id column matches the value stored in the user_id session variable.
 
-    $sql = "SELECT * FROM user
-            WHERE id = {$_SESSION["user_id"]}";
+    $sql = "SELECT * FROM [user] WHERE id = :user_id";
     
     // executes the SQL query using the query() method of the $mysqli object.
 
-    $result = $mysqli->query($sql);
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':user_id', $_SESSION["user_id"]);
     
     // If no user is logged in, the $user variable will be null
     // This creates an array of user data that can be used to display user-specific content or perform other user-specific operations.
        
-    $user = $result->fetch_assoc();
+    // Execute the query
+    $stmt->execute();
+    
+    // Fetch the user data
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
 ?>
