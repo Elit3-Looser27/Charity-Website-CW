@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $host = "charity-hub-database";
     $username = "petedxfwil";
     $password = "5GVJTLD5665X4555$";
-    $database = "charity-hub-database    ";
+    $database = "Charity-Hub-DB";
     
     // Create a database connection
     $mysqli = new mysqli($host, $username, $password, $database);

@@ -45,7 +45,7 @@ if (isset($_SESSION["user_id"])) {
         
     <?php else: ?>
         
-        <p class="Prompt" style="text-align: center; font-size:2rem;"><a href="login.php">Log in</a> or <a href="signup.html">sign up</a></p>
+        <p class="Prompt" style="text-align: center; font-size:2rem;"><a href="login.php">Log in</a> or <a href="signup.php">sign up</a></p>
         
     <?php endif; ?>
 

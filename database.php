@@ -2,7 +2,7 @@
 $host = 'ASP-CharityHubgroup-8326';
 $username = 'petedxfwil';
 $password = '5GVJTLD5665X4555$';
-$database = 'charity-hub-database';
+$database = 'Charity-Hub-DB';
 
 // Create a connection
 $mysqli = new mysqli($host, $username, $password, $database);
