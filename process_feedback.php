@@ -5,10 +5,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $message = $_POST["message"];
     
     // Database connection details
-    $host = "localhost";
-    $username = "root";
-    $password = "";
-    $database = "resit_db";
+    $host = "charity-hub-database";
+    $username = "petedxfwil";
+    $password = "5GVJTLD5665X4555$";
+    $database = "charity-hub-database    ";
     
     // Create a database connection
     $mysqli = new mysqli($host, $username, $password, $database);

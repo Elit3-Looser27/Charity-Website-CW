@@ -1,10 +1,10 @@
 <?php
 session_start();
 // Replace with your database credentials
-$host = 'localhost';
-$dbname = 'resit_db';
-$username = 'root';
-$password = '';
+$host = 'ASP-CharityHubgroup-8326';
+$dbname = 'charity-hub-database';
+$username = 'petedxfwil';
+$password = '5GVJTLD5665X4555$';
 
 // Create a PDO database connection
 try {
