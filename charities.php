@@ -64,7 +64,7 @@
     <a href="charities.php">Charities</a>
     <a href="about.php">About Us</a>
     <a href="donate.php">Donate</a>
-    <a href="comment.php">Give Us Your Feedback</a>
+    <a href="feedback.php">Give Us Your Feedback</a>
   </div>
   <p>&copy; 2023 Donation Website. All rights reserved.</p>
 </footer>
