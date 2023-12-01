@@ -34,7 +34,7 @@
         <input type="password" id="password_confirmation" name="password_confirmation">
     </div>
 
-    <button>Sign up</button>
+    <button href="signup-success.php">Sign up</button>
 </form>
 
 </body>
