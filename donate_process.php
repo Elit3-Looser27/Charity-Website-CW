@@ -2,7 +2,7 @@
 session_start();
 // Replace with your database credentials
 $host = 'ASP-CharityHubgroup-8326';
-$dbname = 'Charity-Hub-DB';
+$dbname = 'Charity-Hub';
 $username = 'petedxfwil';
 $password = '5GVJTLD5665X4555$';
 
