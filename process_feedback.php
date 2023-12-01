@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     
     // Database connection details
     $host = "charity-hub-server.database.windows.net";
-    $username = "Begad-Anass";
+    $username = "petedxfwil";
     $password = "5GVJTLD5665X4555$";
     $database = "Charity-Hub-DB";
     
