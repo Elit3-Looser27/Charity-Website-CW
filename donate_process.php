@@ -3,7 +3,7 @@ session_start();
 // Replace with your database credentials
 $host = '196.136.32.21';
 $dbname = 'Charity-Hub-DB';
-$username = 'petedxfwil';
+$username = 'Begad-Anass';
 $password = '5GVJTLD5665X4555$';
 
 // Create a PDO database connection

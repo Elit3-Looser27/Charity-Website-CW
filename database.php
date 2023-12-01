@@ -1,6 +1,6 @@
 <?php
 $host = '196.136.32.21';
-$username = 'petedxfwil';
+$username = 'Begad-Anass';
 $password = '5GVJTLD5665X4555$';
 $database = 'Charity-Hub-DB';
 
