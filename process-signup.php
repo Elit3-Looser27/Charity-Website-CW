@@ -1,5 +1,6 @@
 <?php
 //// Validate the form data
+ini_set('display_errors', 1); error_reporting(E_ALL);
 
 if (empty($_POST["name"])) {
     die("Name is required");
