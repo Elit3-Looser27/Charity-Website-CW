@@ -6,9 +6,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     
     // Database connection details
     $host = "196.136.32.21";
-    $username = "Begad-Anass";
+    $username = "petedxfwil";
     $password = "5GVJTLD5665X4555$";
-    $database = "Charity-Hub-DB";
+    $database = "Charity-Hub";
     
     // Create a database connection
     $mysqli = new mysqli($host, $username, $password, $database);
