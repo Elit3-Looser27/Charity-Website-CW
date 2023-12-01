@@ -54,7 +54,7 @@ $stmt->bind_param("sss",
 // Execute the statement and handle any errors
 
 if ($stmt->execute()) {
-    header("Location: signup-success.html");
+    header("Location: signup-success.php");
     exit;
 } else {
     if ($stmt->errno === 1062) {
