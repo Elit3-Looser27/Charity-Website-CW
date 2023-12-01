@@ -11,16 +11,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $database = "Charity-Hub";
     
     // Create a database connection
-    $mysqli = new mysqli($host, $username, $password, $database);
-    
-    if ($mysqli->connect_error) {
-        die("Database connection failed: " . $mysqli->connect_error);
+    try {
+        $pdo = new PDO("sqlsrv:Server=$host;Database=$database", $username, $password);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } catch (PDOException $e) {
+        die("Database connection failed: " . $e->getMessage());
     }
     
     // Insert feedback into the "feedback" table
     $sql = "INSERT INTO feedback (name, email, message) VALUES (?, ?, ?)";
-    $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param("sss", $name, $email, $message);
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(1, $name);
+    $stmt->bindParam(2, $email);
+    $stmt->bindParam(3, $message);
     
     if ($stmt->execute()) {
         $successMessage = "Thank you for your feedback!";
@@ -29,11 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $errorMessage = "Oops! Something went wrong. Please try again. You will be redirected to the home page shortly";
         $redirectTo = "index.php";
     }
-    
-    // Close the database connection
-    $stmt->close();
-    $mysqli->close();
-    
+      
     // Provide feedback message with a link to index.php
     echo $successMessage . "<br>";
     echo "You will be redirected to the <a href='$redirectTo'>Home page</a> shortly.";

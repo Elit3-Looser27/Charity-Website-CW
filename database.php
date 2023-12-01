@@ -1,16 +1,15 @@
 <?php
-$host = 'charity-hub-server.database.windows.net';
+$host = 'charity-hub-server.database.windows.net';  // Azure SQL Database server
 $username = 'Begad-Anass';
 $password = 'Hatem@120503';
 $database = 'Charity-Hub';
 
-// Create a connection
-$mysqli = new mysqli($host, $username, $password, $database);
-
-// Check if the connection was successful
-if ($mysqli->connect_error) {
-    die('Database connection failed: ' . $mysqli->connect_error);
+try {
+    $conn = new PDO("sqlsrv:Server=$host;Database=$database", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die('Database connection failed: ' . $e->getMessage());
 }
 
-return $mysqli;
+return $conn;
 ?>

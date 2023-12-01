@@ -39,7 +39,10 @@ $mysqli = require __DIR__ . "/database.php";
 $sql = "INSERT INTO user (name, email, password_hash)
         VALUES (?, ?, ?)";
 
-$stmt = $mysqli->stmt_init();
+$stmt = $conn->prepare($sql);
+if (!$stmt) {
+    die("SQL error: " . $conn->errorInfo()[2]);
+}
 
 if (!$stmt->prepare($sql)) {
     die("SQL error: " . $mysqli->error);
@@ -47,10 +50,9 @@ if (!$stmt->prepare($sql)) {
 
 // Bind the form data to the statement parameters
 
-$stmt->bind_param("sss",
-    $_POST["name"],
-    $_POST["email"],
-    $password_hash);
+$stmt->bindParam(1, $_POST["name"]);
+$stmt->bindParam(2, $_POST["email"]);
+$stmt->bindParam(3, $password_hash);
 
 // Execute the statement and handle any errors
 
@@ -58,9 +60,10 @@ if ($stmt->execute()) {
     header("Location: signup-success.php");
     exit;
 } else {
-    if ($stmt->errno === 1062) {
+    $errorInfo = $stmt->errorInfo();
+    if ($errorInfo[0] == 23000 && $errorInfo[1] == 2627) {
         die("The email address is already taken.");
     } else {
-        die("An error occurred while executing the statement: " . $stmt->error);
+        die("An error occurred while executing the statement: " . $errorInfo[2]);
     }
 }
