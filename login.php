@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <?php if ($is_invalid): ?>
     <p class="error-message">Invalid login</p>
-    <p>It appears that you do not have an account. Would you like to <a href="signup.html">sign up</a>?</p>
+    <p>It appears that you do not have an account. Would you like to <a href="signup.php">sign up</a>?</p>
 <?php endif; ?>
 
 <form method="post">
