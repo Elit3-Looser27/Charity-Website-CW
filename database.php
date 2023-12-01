@@ -1,5 +1,5 @@
 <?php
-$host = 'charity-hub-server.database.windows.net';
+$host = '196.136.32.21';
 $username = 'petedxfwil';
 $password = '5GVJTLD5665X4555$';
 $database = 'Charity-Hub-DB';
