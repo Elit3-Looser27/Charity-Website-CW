@@ -44,10 +44,6 @@ if (!$stmt) {
     die("SQL error: " . $conn->errorInfo()[2]);
 }
 
-if (!$stmt->prepare($sql)) {
-    die("SQL error: " . $mysqli->error);
-}
-
 // Bind the form data to the statement parameters
 
 $stmt->bindParam(1, $_POST["name"]);
