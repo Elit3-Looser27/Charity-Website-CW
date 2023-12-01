@@ -1,7 +1,7 @@
 <?php
 session_start();
 // Replace with your database credentials
-$host = '196.136.32.21';
+$host = 'charity-hub-server.database.windows.net';
 $dbname = 'Charity-Hub';
 $username = 'petedxfwil';
 $password = '5GVJTLD5665X4555$';
