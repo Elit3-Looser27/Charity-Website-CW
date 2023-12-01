@@ -58,7 +58,7 @@ if (isset($_SESSION["user_id"])) {
 <body>
   <div class="container">
     <header class="header">
-        <h2><a href="http://localhost/phpmyadmin">Database</a></h2>
+        <h2><a href="https://portal.azure.com/#@LALALand244.onmicrosoft.com/resource/subscriptions/beb653dd-0fe5-4fdb-97d0-ed809681d8d1/resourceGroups/Charity-Hub-Group/providers/Microsoft.Sql/servers/charity-hub-server/databases/Charity-Hub/queryEditor">Database</a></h2>
       <h1>Donate for a Cause</h1>
     </header>
     <div class="hero">
