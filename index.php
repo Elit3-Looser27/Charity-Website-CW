@@ -1,37 +1,39 @@
 <?php
-// starts a new or resumes an existing session.
-
+// Start or resume a session
 session_start();
 
-// statement checks if a session variable user_id is set, which would indicate that a user is logged in
+// Regenerate session ID on each page load for enhanced security
+session_regenerate_id();
 
+// Check if a user is logged in
 if (isset($_SESSION["user_id"])) {
     
-   // uses the require function to include the database connection file, which contains the connection details to the MySQL database.
-
+    // Include the database connection file
     $pdo = require __DIR__ . "/database.php";
     
-    // variable is assigned an SQL query that selects all columns from the user table where the id column matches the value stored in the user_id session variable.
-
+    // Prepare the SQL statement
     $sql = "SELECT * FROM [user] WHERE id = :user_id";
     
-    // executes the SQL query using the query() method of the $mysqli object.
-
+    // Prepare and execute the SQL query
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':user_id', $_SESSION["user_id"]);
-    
-    // If no user is logged in, the $user variable will be null
-    // This creates an array of user data that can be used to display user-specific content or perform other user-specific operations.
-       
-    // Execute the query
     $stmt->execute();
     
     // Fetch the user data
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Set a secure cookie with the session ID
+    $cookieParams = session_get_cookie_params();
+    setcookie(session_name(), session_id(), [
+        'expires' => time() + 60*60*24, // 1 day for example
+        'path' => $cookieParams["path"],
+        'domain' => $cookieParams["domain"],
+        'secure' => true, // Set to true if using HTTPS
+        'httponly' => true, // HTTPOnly for security
+        'samesite' => 'Strict' // Strict or Lax depending on your needs
+    ]);
 }
-
 ?>
-
 
 
 

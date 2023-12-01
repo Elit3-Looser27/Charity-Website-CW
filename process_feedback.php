@@ -1,8 +1,9 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $name = $_POST["name"];
-    $email = $_POST["email"];
-    $message = $_POST["message"];
+     // Sanitize input data
+     $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_STRING);
+     $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
+     $message = filter_input(INPUT_POST, "message", FILTER_SANITIZE_STRING);
     
     // Database connection details
     $host = "charity-hub-server.database.windows.net";
