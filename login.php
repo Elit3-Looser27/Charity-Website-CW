@@ -1,37 +1,27 @@
 <?php
-<?php
 $is_invalid = false;
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     
-    // Replace with your Azure SQL Database connection details
-    $host = 'charity-hub-server.database.windows.net'; 
-    $dbname = 'Charity-Hub'; 
-    $username = 'Begad-Anass'; 
-    $password = 'Hatem@120503'; 
-
-    try {
-        $pdo = new PDO("sqlsrv:Server=$host;Database=$dbname", $username, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    } catch (PDOException $e) {
-        die("Database connection failed: " . $e->getMessage());
-    }
+    $pdo = require __DIR__ . "/database.php";
     
-    $email = $_POST["email"];
-    $password = $_POST["password"];
-
-    // Prepare and execute the SQL statement
-    $stmt = $pdo->prepare("SELECT * FROM [user] WHERE email = :email");
-    $stmt->execute(['email' => $email]);
-
+    $sql = "SELECT * FROM [user] WHERE email = :email";
+    
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':email', $_POST["email"]);
+    
+    $stmt->execute();
+    
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
     
     if ($user) {
         
-        if (password_verify($password, $user["password_hash"])) {
+        if (password_verify($_POST["password"], $user["password_hash"])) {
             
             session_start();
+            
             session_regenerate_id();
+            
             $_SESSION["user_id"] = $user["id"];
             
             // Check if the user's email matches one of the admin emails
@@ -45,12 +35,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             }
         }
     }
+    // If the email or password is invalid, the variable $is_invalid is set to true.
 
-    // If the email or password is invalid
     $is_invalid = true;
 }
-?>
 
+?>
 
 <!DOCTYPE html>
 <html>
