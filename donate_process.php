@@ -87,8 +87,8 @@ if ($_POST["payment-method"] === "cash") {
   $cardNumber = "CASH-" . strval(uniqid());
 } else {
   // For online payment methods, encrypt the provided card number
-  $encryptedCardNumber = openssl_encrypt($_POST["card_number"], 'AES-128-ECB', $encryption_key);
-  $cardNumber = $encryptedCardNumber;
+ // $encryptedCardNumber = openssl_encrypt($_POST["card_number"], 'AES-128-ECB', $encryption_key);
+ // $cardNumber = $encryptedCardNumber;
 }
 
 
