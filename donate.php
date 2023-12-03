@@ -83,7 +83,7 @@
         <input type="text" id="card-cvv" name="cvv">
       </div>
       <div class="form-group">
-        <button action= "donate_proccess.php "type="submit" class="donate-button">Donate Now</button>
+        <button type="submit" class="donate-button">Donate Now</button>
       </div>
     </form>
   </div>
